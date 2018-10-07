@@ -1,7 +1,7 @@
-package com.hmily.trans.service;
+package com.hmily.trans.common.service;
 
 
-import com.hmily.trans.dto.OrderDTO;
+import com.hmily.trans.common.dto.OrderDTO;
 
 public interface IOrderService {
 

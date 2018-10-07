@@ -1,4 +1,4 @@
-package com.hmily.trans.dto;
+package com.hmily.trans.common.dto;
 
 
 public class OrderDTO {

@@ -1,4 +1,4 @@
-package com.hmily.trans.proxy;
+package com.hmily.trans.common.registry;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ProxyApplicationTests {
+public class RegistryApplicationTests {
 
 	@Test
 	public void contextLoads() {

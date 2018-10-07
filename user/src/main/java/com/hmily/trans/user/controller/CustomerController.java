@@ -1,7 +1,7 @@
 package com.hmily.trans.user.controller;
 
 
-import com.hmily.trans.dto.OrderDTO;
+import com.hmily.trans.common.dto.OrderDTO;
 import com.hmily.trans.user.dao.CustomerRepository;
 import com.hmily.trans.user.domain.Customer;
 import com.hmily.trans.user.feign.OrderClient;
