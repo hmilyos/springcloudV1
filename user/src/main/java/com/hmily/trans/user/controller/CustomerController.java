@@ -1,8 +1,10 @@
 package com.hmily.trans.user.controller;
 
 
+import com.hmily.trans.dto.OrderDTO;
 import com.hmily.trans.user.dao.CustomerRepository;
 import com.hmily.trans.user.domain.Customer;
+import com.hmily.trans.user.feign.OrderClient;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +31,9 @@ public class CustomerController {
     @Autowired
     private CustomerRepository customerRepository;
 
+    @Autowired
+    private OrderClient orderClient;
+
 
     @PostMapping("")
     @HystrixCommand
@@ -43,13 +48,13 @@ public class CustomerController {
     }
 
     @GetMapping("/my")
-//    @HystrixCommand
+    @HystrixCommand
     public Map getMyInfo() {
         Customer customer = customerRepository.findOneByUsername("hmily");
-//        OrderDTO order = orderClient.getMyOrder(1l);
+        OrderDTO order = orderClient.getMyOrder(1l);
         Map result = new HashMap();
         result.put("customer", customer);
-//        result.put("order", order);
+        result.put("order", order);
         return result;
     }
 

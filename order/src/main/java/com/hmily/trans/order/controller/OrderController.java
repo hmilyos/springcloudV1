@@ -1,8 +1,10 @@
 package com.hmily.trans.order.controller;
 
 
+import com.hmily.trans.dto.OrderDTO;
 import com.hmily.trans.order.dao.OrderRepository;
 import com.hmily.trans.order.domain.Order;
+import com.hmily.trans.service.IOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/order")
-public class OrderController  {
+public class OrderController implements IOrderService {
 
     @PostConstruct
     public void init() {
@@ -26,27 +28,27 @@ public class OrderController  {
     @Autowired
     private OrderRepository orderRepository;
 
-//    @PostMapping("")
-//    public OrderDTO create(@RequestBody OrderDTO dto) {
-//        Order order = new Order();
-//        order.setAmount(dto.getAmount());
-//        order.setTitle(dto.getTitle());
-//        order.setDetail(dto.getDetail());
-//        order = orderRepository.save(order);
-//        dto.setId(order.getId());
-//        return dto;
-//    }
-//
-//    @GetMapping("/{id}")
-//    public OrderDTO getMyOrder(@PathVariable Long id) {
-//        Order order = orderRepository.findOne(id);
-//        OrderDTO dto = new OrderDTO();
-//        dto.setId(order.getId());
-//        dto.setAmount(order.getAmount());
-//        dto.setTitle(order.getTitle());
-//        dto.setDetail(order.getDetail());
-//        return dto;
-//    }
+    @PostMapping("")
+    public OrderDTO create(@RequestBody OrderDTO dto) {
+        Order order = new Order();
+        order.setAmount(dto.getAmount());
+        order.setTitle(dto.getTitle());
+        order.setDetail(dto.getDetail());
+        order = orderRepository.save(order);
+        dto.setId(order.getId());
+        return dto;
+    }
+
+    @GetMapping("/{id}")
+    public OrderDTO getMyOrder(@PathVariable Long id) {
+        Order order = orderRepository.findOne(id);
+        OrderDTO dto = new OrderDTO();
+        dto.setId(order.getId());
+        dto.setAmount(order.getAmount());
+        dto.setTitle(order.getTitle());
+        dto.setDetail(order.getDetail());
+        return dto;
+    }
 
     @GetMapping("")
     public List<Order> getAll() {
